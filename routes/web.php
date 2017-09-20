@@ -68,4 +68,8 @@ Route::get('/delete_item_back','AdminController@delete_item_back');
 
 Route::any('/reset','AdminController@reset');
 
+Route::post('/mail','MailController@mail');
+Route::post('/calculate_coast','MailController@calculate_coast');
+Route::post('/price_list','MailController@price_list');
+
 

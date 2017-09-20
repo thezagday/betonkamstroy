@@ -59,22 +59,38 @@
         <div class="calc-price-bg">
             <div class="calc-price">
                 <div class="calc-price__title">Рассчитать стоимость бетона</div>
-                <form class="calc-price-form">
+                <form class="calc-price-form" action="/calculate_coast" method="POST">
+                    {{csrf_field()}}
                     <input class="form-input" type="text" id="name" name="name" placeholder="Имя"/>
-                    <select class="form-input" name="concrete-mark">
+                    <select class="form-input" name="concrete_mark">
                         @foreach ($products as $product)
                             <option value="{!! $product->title !!}">{!! $product->title !!}</option>
                         @endforeach
                     </select>
-                    <select class="form-input" name="concrete-mark">
+                    <select class="form-input" name="concrete_mark">
                         @foreach ($products as $product)
                             <option value="{!! $product->title !!}">{!! $product->title !!}</option>
                         @endforeach
                     </select>
-                    <input class="form-input" type="text" id="tel" name="tel" placeholder="Номер телефона"/>
-                    <input class="form-input" type="text" id="kol-vo" name="kol-vo" placeholder="Количество кубов"/>
+                    <input class="form-input" type="text" id="tel" name="phone" placeholder="Номер телефона"/>
+                    <input class="form-input" type="text" id="kol-vo" name="numb_cubes" placeholder="Количество кубов"/>
                     <input class="form-input form-submit" type="submit" value="отправить"/>
                 </form>
+                <?php
+                session_start();
+                if(isset($_SESSION['sended']) && ($_SESSION['sended'])) : ?>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/6.6.2/sweetalert2.min.css">
+                <script src="https://cdn.jsdelivr.net/sweetalert2/6.6.2/sweetalert2.min.js"></script>
+                <script>
+                    swal({
+                        title: 'Успешно отправлено!',
+                        timer: 3000,
+                        type: 'success',
+                        showCancelButton: false,
+                        showConfirmButton: false
+                    });
+                </script>
+                <?php $_SESSION['sended'] = null; endif; ?>
             </div>
         </div>
     </div>
@@ -104,18 +120,34 @@
     <!-- Модальное окно - Ассортимент-->
     <div class="modal fade" id="modal-box_assort" tabindex="-1" role="dialog" aria-labelledby="assort-btn" aria-hidden="true">
         <div class="modal-box modal-box_assort modal-dialog">
-            <form class="modal-box-form">
+            <form class="modal-box-form" action="calculate_coast" method="POST">
+                {{csrf_field()}}
+                <input type="hidden" value="1" name="product">
                 <div class="modal-box__title">
                     <div class="modal-box__title-text">Заказать продукт</div>
                     <div class="modal-box__title-underline"></div>
                 </div>
-                <input class="modal-box-form__input" type="text" name="assort__name" placeholder="Имя" id="assort__name"/>
-                <input class="modal-box-form__input" type="text" name="assort__tel" placeholder="Номер телефона" id="assort__tel"/>
-                <input class="modal-box-form__input" type="text" name="assort__cubes" placeholder="Количество кубов" id="assort__name"/>
-                <input class="modal-box-form__input" name="assort__mark-select" value="Бетон марки 150" id="assort__mark"/>
+                <input class="modal-box-form__input" type="text" name="name" placeholder="Имя" id="assort__name"/>
+                <input class="modal-box-form__input" type="text" name="phone" placeholder="Номер телефона" id="assort__tel"/>
+                <input class="modal-box-form__input" type="text" name="numb_cubes" placeholder="Количество кубов" id="assort__name"/>
+                <input class="modal-box-form__input" name="concrete_mark"  id="assort__mark"/>
                 <input class="modal-box-form__submit" type="submit" value="Оформить заказ"/>
                 <div class="modal-box__note">*Ваши персональные данные в безопасности</div>
             </form>
+            <?php
+            if(isset($_SESSION['sended']) && ($_SESSION['sended'])) : ?>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/6.6.2/sweetalert2.min.css">
+            <script src="https://cdn.jsdelivr.net/sweetalert2/6.6.2/sweetalert2.min.js"></script>
+            <script>
+                swal({
+                    title: 'Успешно отправлено!',
+                    timer: 3000,
+                    type: 'success',
+                    showCancelButton: false,
+                    showConfirmButton: false
+                });
+            </script>
+            <?php $_SESSION['sended'] = null; endif; ?>
         </div>
     </div>
     <!-- /Модальное окно - Ассортимент-->
@@ -167,12 +199,27 @@
                 <div class="send-app__title1">Не нашли нужную информацию?</div>
                 <div class="send-app__title2">Отправьте заявку и мы вышлем Вам полный прайс-лист</div>
                 <!-- Форма отправки заявки-->
-                <form class="send-app-form">
-                    <input class="form-input" type="text" name="price-name" placeholder="Имя"/>
-                    <input class="form-input" type="text" name="price-tel" placeholder="Номер телефона"/>
-                    <input class="form-input" type="text" name="price-mail" placeholder="Электронная почта"/>
+                <form class="send-app-form" action="/price_list" method="POST">
+                    {{csrf_field()}}
+                    <input class="form-input" type="text" name="name" placeholder="Имя"/>
+                    <input class="form-input" type="text" name="phone" placeholder="Номер телефона"/>
+                    <input class="form-input" type="text" name="mail" placeholder="Электронная почта"/>
                     <input class="form-input form-submit" type="submit" value="отправить"/>
                 </form>
+                <?php
+                if(isset($_SESSION['sended']) && ($_SESSION['sended'])) : ?>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/6.6.2/sweetalert2.min.css">
+                <script src="https://cdn.jsdelivr.net/sweetalert2/6.6.2/sweetalert2.min.js"></script>
+                <script>
+                    swal({
+                        title: 'Успешно отправлено!',
+                        timer: 3000,
+                        type: 'success',
+                        showCancelButton: false,
+                        showConfirmButton: false
+                    });
+                </script>
+                <?php $_SESSION['sended'] = null; endif; ?>
             </div>
         </div>
     </div>
@@ -261,16 +308,31 @@
             <!-- Модальное окно - Заказать звонок-->
             <div class="modal fade" id="modal-box_call-back" tabindex="-1" role="dialog" aria-labelledby="assort-btn" aria-hidden="true">
                 <div class="modal-box modal-dialog">
-                    <form class="modal-box-form">
+                    <form class="modal-box-form" action="/mail" method="POST">
+                        {{csrf_field()}}
                         <div class="modal-box__title">
                             <div class="modal-box__title-text">Заказ обратного звонка</div>
                             <div class="modal-box__title-underline"></div>
                         </div>
-                        <input class="modal-box-form__input" type="text" name="call-back__name" placeholder="Имя" id="call-back__name"/>
-                        <input class="modal-box-form__input" type="text" name="call-back__tel" placeholder="Номер телефона" id="call-back__tel"/>
+                        <input class="modal-box-form__input" type="text" name="name" placeholder="Имя" id="call-back__name"/>
+                        <input class="modal-box-form__input" type="text" name="phone" placeholder="Номер телефона" id="call-back__tel"/>
                         <input class="modal-box-form__submit" type="submit" value="Заказать звонок"/>
                         <div class="modal-box__note">*Ваши персональные данные в безопасности</div>
                     </form>
+                    <?php
+                    if(isset($_SESSION['sended']) && ($_SESSION['sended'])) : ?>
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/6.6.2/sweetalert2.min.css">
+                    <script src="https://cdn.jsdelivr.net/sweetalert2/6.6.2/sweetalert2.min.js"></script>
+                    <script>
+                        swal({
+                            title: 'Успешно отправлено!',
+                            timer: 3000,
+                            type: 'success',
+                            showCancelButton: false,
+                            showConfirmButton: false
+                        });
+                    </script>
+                    <?php $_SESSION['sended'] = null; endif; ?>
                 </div>
             </div>
         </div>

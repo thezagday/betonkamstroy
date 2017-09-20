@@ -1,0 +1,793 @@
+@charset "UTF-8";
+/* Общие стили */
+* {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box; }
+
+html {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; }
+
+/* /Общие стили */
+/* Модификаторы */
+.mod_contour {
+  border: 1px solid grey;
+  padding: 1px; }
+
+.mod_stand-pad {
+  padding-left: 10px;
+  padding-right: 10px; }
+
+.mod_anchor-padd {
+  top: -90px;
+  position: absolute; }
+
+.mod_posr {
+  position: relative; }
+
+@media screen and (max-width: 980px) {
+  .mod_anchor-padd {
+    top: -169px; } }
+@media screen and (max-width: 520px) {
+  .mod_anchor-padd {
+    top: -130px; } }
+/* /Модификаторы */
+/* Шапка */
+header {
+  background-color: #000;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10; }
+
+.header {
+  position: relative;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1110px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 10px 0;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: auto;
+  box-sizing: content-box; }
+
+.header-menu {
+  padding: 1px; }
+
+.header-menu__item {
+  display: inline-block; }
+
+.header-menu__item a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  transition: .2s ease; }
+
+.header-menu__item a:hover {
+  color: #ffea00; }
+
+.header-menu__item a.active,
+.header-menu__item a:active,
+.header-menu__item a:focus {
+  color: #ffea00;
+  text-decoration: underline; }
+
+.header-menu__item-dot {
+  height: 4px;
+  width: 4px;
+  border-radius: 50%;
+  border: 1px solid #b9dfff;
+  background-color: #b9dfff;
+  vertical-align: middle;
+  margin: 5px 7px; }
+
+.mobile-menu {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 35px;
+  height: 35px;
+  box-sizing: border-box;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  text-align: center;
+  display: none; }
+
+.mobile-menu__strokes {
+  position: relative;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: stretch;
+  height: 100%;
+  cursor: pointer;
+  align-items: center;
+  padding: 3px 0;
+  opacity: 1; }
+
+.mobile-menu__stroke {
+  position: relative;
+  height: 3px;
+  background: #fff;
+  transition: .2s ease;
+  width: 80%; }
+
+#mobile-menu_stroke-cross:checked ~ .mobile-menu .mobile-menu__strokes .mobile-menu__stroke-cross1 {
+  transform: rotate(45deg);
+  top: 9px; }
+
+#mobile-menu_stroke-cross:checked ~ .mobile-menu .mobile-menu__strokes .mobile-menu__stroke-cross2 {
+  transform: rotate(-45deg);
+  top: 0px; }
+
+#mobile-menu_stroke-cross:checked ~ .mobile-menu .mobile-menu__strokes .mobile-menu__stroke-cross3 {
+  opacity: 0; }
+
+.mobile-menu__menu {
+  position: absolute;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  -o-flex-direction: column;
+  flex-direction: column;
+  top: 100%;
+  color: #545454;
+  font-weight: 600;
+  background-color: #fff;
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: 0px 0px 9px rgba(128, 128, 128, 0.59);
+  left: 10px;
+  right: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  max-height: 0;
+  border: 0px solid #b9b8b8;
+  padding: 0 11px;
+  opacity: 0;
+  transition: .3s ease;
+  display: none; }
+
+#mobile-menu_stroke-cross:checked ~ .mobile-menu__menu {
+  border-width: 1px;
+  padding: 5px 11px;
+  opacity: 1;
+  max-height: 500px;
+  margin-top: 10px;
+  z-index: 10; }
+
+.mobile-menu__item {
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+
+.mobile-menu__item li {
+  margin: 10px 0; }
+
+.mobile-menu__item-a {
+  text-decoration: none;
+  color: #000; }
+
+.mobile-menu__item-a:active,
+.mobile-menu__item-a:focus {
+  color: #79758A; }
+
+.header__phones {
+  text-align: right; }
+
+.header__phones-phone_yellow {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffea00;
+  margin-left: 4px; }
+
+a.header__phones-btn {
+  color: #fff;
+  transition: .2s ease; }
+
+a.header__phones-btn:hover,
+a.header__phones-btn:active,
+a.header__phones-btn:visited,
+a.header__phones-btn:focus {
+  color: #ffea00 !important; }
+
+@media screen and (max-width: 980px) {
+  .header {
+    flex-flow: column; }
+
+  .header__phones {
+    text-align: center; } }
+@media screen and (max-width: 520px) {
+  .header-menu {
+    display: none; }
+
+  .mobile-menu {
+    display: block; }
+
+  .mobile-menu__menu {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex; } }
+@media screen and (max-width: 360px) {
+  .header__logo {
+    width: 100%; } }
+/* /Шапка */
+/* Слайдер */
+.slider-cell {
+  margin-top: 70px; }
+
+.slider {
+  position: relative;
+  height: 500px;
+  overflow: hidden; }
+
+.slider__img {
+  position: absolute;
+  left: 50%;
+  transform: translatex(-50%); }
+
+.slider-window {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0; }
+
+.slider-text {
+  position: relative;
+  max-width: 1110px;
+  margin: auto;
+  margin-top: 70px;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: content-box; }
+
+.slider-text__item1-span {
+  display: inline;
+  background-color: #000;
+  color: #fff;
+  padding: 3px 10px 0;
+  text-transform: uppercase;
+  font-size: 48px; }
+
+.slider-text__item2 {
+  margin-top: 15px; }
+
+.slider-text__item2-span {
+  display: inline;
+  background-color: #ffea00;
+  padding: 7px 50px 7px 7px;
+  font-size: 31px;
+  font-weight: 300; }
+
+@media screen and (min-width: 1700px) {
+  .slider {
+    height: inherit; }
+
+  .slider__img {
+    position: relative;
+    width: 100%; } }
+@media screen and (max-width: 1200px) {
+  .slider {
+    height: 500px; }
+
+  .slider__img {
+    bottom: 0; } }
+@media screen and (max-width: 1000px) {
+  .slider {
+    height: 400px; } }
+@media screen and (max-width: 980px) {
+  .slider-cell {
+    margin-top: 159px; } }
+@media screen and (max-width: 520px) {
+  .slider-cell {
+    margin-top: 113px; } }
+@media screen and (max-width: 330px) {
+  .slider-cell {
+    margin-top: 100px; } }
+/* /Слайдер */
+/* Рассчитать стоимость бетона */
+.calc-price-bg {
+  margin: auto;
+  background-color: #ffea00;
+  max-width: 1200px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px; }
+
+.calc-price {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  max-width: 950px;
+  margin: auto;
+  box-sizing: border-box; }
+
+.calc-price__title {
+  font-size: 31px;
+  font-weight: 300;
+  min-width: 270px;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  align-items: center; }
+
+.calc-price-form {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center; }
+
+.form-input {
+  width: 210px;
+  height: 37px;
+  border: none;
+  border-radius: 5px;
+  padding-left: 20px;
+  margin: 5px 0;
+  background-color: #fff;
+  color: #79758A; }
+
+.form-input.form-submit {
+  padding: 0;
+  background-color: #000;
+  color: #ffea00;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: .2s ease; }
+
+.form-input.form-submit:hover {
+  box-shadow: 0px 0px 7px #888888; }
+
+@media screen and (max-width: 1000px) {
+  .calc-price {
+    flex-wrap: wrap;
+    justify-content: center; }
+
+  .calc-price__title {
+    margin-bottom: 10px;
+    text-align: center; } }
+/* /Рассчитать стоимость бетона */
+/* Наш ассортимент */
+.our-range {
+  margin-top: 80px; }
+
+.our-range__title {
+  text-align: center;
+  text-transform: uppercase; }
+
+.our-range-items {
+  max-width: 1110px;
+  margin: auto;
+  text-align: justify; }
+
+.our-range-item {
+  position: relative;
+  display: inline-block;
+  width: 255px;
+  height: 300px;
+  border-radius: 10px;
+  margin: 15px 5px;
+  transition: .2s ease; }
+
+.our-range-item:hover {
+  box-shadow: 0px 0px 5px #888888; }
+
+.our-range-item__title {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  height: 50px;
+  border-radius: 10px;
+  background-color: #00a9f7;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px; }
+
+.our-range-item__btn {
+  background-color: #ffee00;
+  position: absolute;
+  padding: 11px 41px;
+  border-radius: 10px;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  transition: .2s ease; }
+
+.our-range-item__btn:hover {
+  box-shadow: 0px 0px 7px #888888; }
+
+.our-range-item__empty {
+  position: relative;
+  display: inline-block;
+  width: 255px; }
+
+.modal-box_assort {
+  max-height: 580px !important;
+  max-width: 530px !important; }
+
+.modal__bg {
+  background-color: rgba(0, 0, 0, 0.27);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; }
+
+.modal-box-form__input {
+  background-color: #fff;
+  color: #79758A; }
+
+@media screen and (max-width: 1110px) {
+  .our-range-items {
+    text-align: center; } }
+/* /Наш ассортимент */
+/* Почему выбирают нас */
+.why-us {
+  background-image: url("../images/why-us__bg.png");
+  padding: 35px 20px;
+  margin-top: 80px; }
+
+.why-us__title {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 40px; }
+
+.why-us-items {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: calc(1110px + 20px);
+  margin: auto; }
+
+.why-us-item {
+  font-size: 16px;
+  font-weight: 400;
+  width: 33.33%;
+  min-width: 320px;
+  padding: 0 10px;
+  padding-bottom: 40px;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex; }
+
+.why-us-item p {
+  margin: 0; }
+
+.why-us-item__img {
+  height: 95px;
+  width: 95px;
+  background-color: #00a9f7;
+  border-radius: 50%;
+  float: left;
+  margin-right: 20px;
+  flex-shrink: 0; }
+
+.why-us-items button {
+  display: none !important; }
+
+@media screen and (max-width: 1000px) {
+  .why-us-items {
+    justify-content: center; } }
+@media screen and (max-width: 950px) {
+  .why-us-item {
+    text-align: center;
+    width: 100%;
+    min-width: inherit;
+    flex-direction: column;
+    align-items: center; }
+
+  .why-us-item__img {
+    float: none;
+    margin-right: 0;
+    display: inline;
+    margin-bottom: 20px; } }
+/* /Почему выбирают нас */
+/* Как мы работаем */
+.we-work {
+  padding-left: 10px;
+  padding-right: 10px;
+  max-width: calc(1110px + 20px);
+  margin: auto;
+  margin-top: 80px; }
+
+.we-work__title {
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 40px; }
+
+.we-work-items {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1110px;
+  margin: auto; }
+
+.we-work-item {
+  text-align: center;
+  margin-bottom: 40px;
+  max-width: 170px; }
+
+.we-work-item__img {
+  margin-bottom: 20px; }
+
+.we-work-item__title {
+  font-size: 18px; }
+
+@media screen and (max-width: 900px) {
+  .we-work-items {
+    flex-wrap: wrap;
+    justify-content: space-around; } }
+/* /Как мы работаем */
+/* Отправьте заявку */
+.cell-send-app {
+  background-color: #ffea00;
+  padding: 40px 10px 50px;
+  margin-top: 30px; }
+
+.send-app {
+  max-width: 950px;
+  margin: auto; }
+
+.send-app__title1,
+.send-app__title2 {
+  text-align: center;
+  font-size: 31px; }
+
+.send-app-form {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 30px; }
+
+.send-app-form .form-input {
+  min-width: 220px; }
+
+@media screen and (max-width: 1150px) {
+  .send-app-form {
+    justify-content: space-around; } }
+/* /Отправьте заявку */
+/* Наши гарантии */
+.our-guarant-s {
+  padding: 80px 0; }
+
+.our-guarant-s .we-work__title {
+  margin-bottom: 50px; }
+
+.our-guarant-s .we-work-items {
+  justify-content: space-around; }
+
+.our-guarant-s .we-work-item {
+  max-width: 240px; }
+
+/* /Наши гарантии */
+/* Компания и услуги */
+.cell-company {
+  background-color: #ddd;
+  padding: 50px 10px;
+  position: relative;
+  width: 100%; }
+
+.company__title {
+  margin-bottom: 50px;
+  text-transform: uppercase; }
+
+.company {
+  position: relative;
+  text-align: center;
+  max-width: 900px;
+  margin: auto; }
+
+.company__img-left {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.company__img-right {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.company__text {
+  z-index: 100; }
+
+@media screen and (max-width: 700px) {
+  .company__img-left,
+  .company__img-right {
+    display: none; } }
+/* /Компания и услуги */
+/* Компания и услуги - II */
+.company-ii {
+  padding: 60px 0; }
+
+.company-ii .why-us__title {
+  margin-bottom: 0; }
+
+.why-us__description {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 70px; }
+
+/* /Компания и услуги - II */
+/* Карта */
+/* /Карта */
+.modal-box {
+  position: fixed;
+  background-color: #fff;
+  border: 10px solid #00a9f7;
+  border-radius: 5px;
+  padding: 40px 10px 60px;
+  max-width: 540px;
+  max-height: 427px;
+  color: #000;
+  margin-left: 10px;
+  margin-right: 10px;
+  z-index: 10; }
+
+.modal-box__title {
+  margin-bottom: 50px; }
+
+.modal-box__title-text {
+  font-size: 30px;
+  font-weight: 300;
+  text-align: center; }
+
+.modal-box__title-underline {
+  border: 1px solid #00a9f7;
+  height: 0;
+  margin: 2px 3px;
+  margin-bottom: 0; }
+
+.modal-box-form {
+  max-width: 350px;
+  margin: auto; }
+
+.modal-box-form__input {
+  display: inline-block;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #bababa;
+  padding: 9px 0;
+  padding-left: 18px;
+  margin-bottom: 20px;
+  box-sizing: border-box; }
+
+.modal-box-form__submit {
+  width: 100%;
+  border: none;
+  background-color: #ffea00;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 0;
+  border-radius: 5px;
+  margin: 15px 0;
+  cursor: pointer; }
+
+.modal-box__note {
+  font-size: 12px;
+  font-weight: 300;
+  margin-top: 25px; }
+
+/* Карта */
+.map {
+  margin-bottom: -10px; }
+
+/* /Карта */
+/* Подвал */
+footer {
+  background-color: #000; }
+
+.footer {
+  position: relative;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1110px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 18px;
+  padding: 30px 0;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: auto;
+  box-sizing: content-box; }
+
+.footer__phone-mail {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 37%;
+  margin: 20px 0 25px; }
+
+.footer__mail {
+  margin-right: 10px; }
+
+.footer__phones {
+  margin-left: 10px; }
+
+.footer__phones-phone_yellow {
+  font-size: 24px;
+  margin-left: 4px;
+  color: #ffea00; }
+
+.footer__call-back {
+  color: #000;
+  background-color: #ffea00;
+  border-radius: 5px;
+  padding: 9px 24px;
+  cursor: pointer; }
+
+.footer i {
+  margin-right: 5px; }
+
+.to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  background-color: #000;
+  text-align: center;
+  width: 42px;
+  border: 2px solid #ffea00;
+  border-radius: 8px; }
+
+.to-top__arrow {
+  padding: 10px 0;
+  color: #ffea00;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  margin: 0 !important; }
+
+@media screen and (max-width: 850px) {
+  .footer {
+    flex-direction: column;
+    padding: 50px 0; }
+
+  .footer__logo,
+  .footer__mail,
+  .footer__phones,
+  .footer__call-back {
+    margin: 5px; }
+
+  .footer__phone-mail {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    min-width: 420px; } }
+@media screen and (max-width: 420px) {
+  .footer__phone-mail {
+    flex-direction: column;
+    min-width: 100%; } }
+/* /Подвал */
+
+/*# sourceMappingURL=style.css.map */

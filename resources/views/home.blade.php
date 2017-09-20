@@ -47,7 +47,7 @@
         <div class="slider"><img class="slider__img" src="{!! $slider->img !!}"/>
             <div class="slider-window">
                 <div class="slider-text">
-                    <div class="slider-text__item1"><span class="slider-text__item1-span">{!! $slider->title1 !!}</span></div>
+                    <div class="slider-text__item1"><span class="slider-text__item1-span">{!! $slider->title1 !!}Роман</span></div>
                     <div class="slider-text__item2"><span class="slider-text__item2-span">{!! $slider->title2 !!}</span></div>
                 </div>
             </div>
